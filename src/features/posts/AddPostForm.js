@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { nanoid } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import { postAdded } from './postSlice'
 
@@ -12,13 +11,7 @@ export const AddPostForm = () => {
 
   const onSavePostClicked = () => {
     if (postData.title && postData.content) {
-      dispatch(
-        postAdded({
-          id: nanoid(),
-          title: postData.title,
-          content: postData.content,
-        })
-      )
+      dispatch(postAdded(postData.title, postData.content))
     }
     setPostData({ title: '', content: '' })
   }
@@ -41,7 +34,9 @@ export const AddPostForm = () => {
           value={postData.content}
           onChange={onPostDataChanged}
         />
-        <button type="button" onClick={onSavePostClicked}>Save Post</button>
+        <button type="button" onClick={onSavePostClicked}>
+          Save Post
+        </button>
       </form>
     </section>
   )
