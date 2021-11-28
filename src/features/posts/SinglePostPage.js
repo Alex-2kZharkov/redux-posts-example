@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { PostAuthor } from './PostAuthor'
 
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params
@@ -18,6 +19,7 @@ export const SinglePostPage = ({ match }) => {
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
       <p>{post.content}</p>
+      <PostAuthor userId={post.user}/>
     </article>
   )
 }
