@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { PostAuthor } from './PostAuthor'
+import { ReactionButtons } from './ReactionButtons'
 
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params
@@ -20,6 +21,7 @@ export const SinglePostPage = ({ match }) => {
       <h3>{post.title}</h3>
       <p>{post.content}</p>
       <PostAuthor userId={post.user}/>
+      <ReactionButtons post={post}/>
     </article>
   )
 }
